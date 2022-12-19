@@ -1,0 +1,209 @@
+INTRODUCTION TO GIT:
+Version Control System: Version control system helps you to track and manage changes made to your files or software codes.
+
+Benefits of VCS:
+--Traceability: Helps us track changes.
+--Collaboration
+--Backup and Recovery
+--Repository/Storage
+
+Types of VCS:
+1. Local VCS: In entails having a version database on your local machine/server that stores versions (changes) of your file.
+Cons: 
+--If the local machine/server crashes, you lose your project
+--If any of the versions gets corrupted, you lose that version/change thereby having an incomplete project.
+
+Example.txt: This is an example --> Version 1
+Just an addition to this --> Version 2
+Let us add something else --> Version 3
+
+2. Centralized VCS: This stores versions of your project on a central server, and allows simultaneous access to the files.
+Cons:
+--No two persons can work on same file at the same time
+--If the central server crashes, you lose your project.
+Example: SVN (Subversion) 
+
+3. Distributed VCS: This allows collaboration, enabling different users to have a copy of the project on their local machine and push changes when done for other users to have access to.
+
+GO TO LAB:
+Step 1: Provision a Linux instance
+
+Step 2: Apply updates to your instance
+Command: sudo yum update
+
+Step 3: Install git
+Command: sudo yum install git -y
+
+Step 4: Confirm that git was successfully installed
+Commands: git -v
+whereis git
+which git
+
+Step 5: Configure certain metadat
+Command for Username: git config --global user.name "acadalearning"
+Command for email: git config --global user.email "acadalearning@gmail.com"
+
+To confirm your configurations:
+git config user.name
+git config user.email
+
+Step 6: Create and cd into a directory
+Command: mkdir git_project && cd git_project
+
+Step 7: Initialize git in the directory
+Command: git init
+
+To confirm the status of your working area: git status
+
+Step 8: Create a file
+Command: touch gitFile1.txt
+
+Step 9: Add file(s) to staging area to be tracked by git
+Command: git add gitFile1.txt
+Command to add all files: git add .
+
+To remove files from staging area:
+Command: git rm --cached gitFile1.txt
+
+Step 10: Commit your changes to your local repo
+Command for single line message: git commit -m "Add 2 new files"
+Command for multiline message: git commit --all
+Command to modify last commit message: git commit --amend -m "New message"
+
+Command to commit changes from working area directly to local repo:
+git commit --am "A message"
+
+Command to see commit history: git log
+To see history in oneline: git log --oneline
+To see history from a certain date: git log --since=2022/08/02 
+To see history up to a certain date: git log --until=2022/12/03
+To see last 2 commits: git log -2
+
+Command to see details of a commit: git show ba9ccb9
+Command to see the difference between two commits: git diff <previouscommit> <latestcommit>
+Eg: git diff 2b47783 abfb2ec
+
+
+BRANCHING:
+A branch is a line of development which is different from the master/main branch
+
+To create a new branch: git branch bugfix
+To see all the branches: git branch
+An asterisk * would precede the branch currently bring worked in
+To checkout to a branch: git checkout bugfix
+git switch bugfix
+
+To create a branch and checkout at once: git checkout -b newfeature
+git switch -c newbranch
+
+Whenever you checkout a branch, all commits and changes from the source branch are moved to the new branch with the HEAD pointing at same lastest commit.
+
+=======================================
+
+GIT BRANCHING CONTINUED
+To delete a branch: git branch -d bugfix
+To forcefully delete a branch before merging: git branch -D bugfix
+
+GIT MERGE:
+This entails merging/integrating a branch into another branch
+To do this, you checkout to your destination branch(say master) and run the command: git merge bugfix
+
+MERGE CONFLICTS:
+This occurs when two branches has different contents of same file and you try to perform a merge.
+DevOpsEng A works on file1.txt and DevOpsEng B works on same file1.txt
+A merge would result in a merge conflict on file1.txt.
+
+RESOLVING A MERGE CONFLICT:
+--Edit the file via a text editor or you vi into the file and modify it to contain the necessary contents
+--After this, you run a git commit 
+
+STASH:
+This entails saving changes in your working tree which you do not want to commit yet and have to switch to another branch.
+By default, stash saves tracked files with the command: git stash
+To stash all changes both tracked and untracked: git stash -u
+
+TO RECOVER CONTENTS FROM THE STASH:
+Option 1: git stash pop
+This empties the stash into your working tree and deletes it from the stash
+
+Option 2: git stash apply
+This recovers the content of your stash but does not delete it from the stash.
+
+To see a list of your stash: git stash list
+
+GIT HUB:
+This is the remote repository that allows for collaboration.
+You connect your local repo to the remote repo
+
+STEPS:
+1. Create a github account if you do not have one via github.com
+2. Connect your local repo to the github repo using: git remote add origin https://github.com/SusanOnuorah/fintech.git
+To rename your local default branch to same as that of the remote repo: git branch -M main
+NOTE: Make sure you are currently on the branch you want to rename.
+
+To push the local contents to your remote repo: git push -u origin <branch>
+Eg: git push -u origin main
+
+CREATING A PULL REQUEST: This means working on a branch on your local repo and pushing to the remote repo, seeking for permission for your branch and changes to be merged to the main branch on the remote repo.
+To do this:
+You can make changes to a branch other than main branch and push that branch to your remote repo.
+
+
+GETTING CHANGES FROM THE REMOTE REPO TO OUR LOCAL REPO:
+This entails updating our local repo to be at same commit with our remote repo.
+There are to ways to achieve this:
+1. FETCH AND MERGE:
+This entails fetching the changes from the remote repo first without adding the changes to our local repo
+Command: git fetch
+
+In order to add/merge these fetched changes to our local repo, you have to merge using
+Command: git merge origin/main
+
+2. GIT PULL: This pulls changes from the remote repo directly to our local repo
+Command: git pull
+
+FORK: This is to copy a repository into your gitHub account (to become a repo in your account).
+To do this:
+--Go to to the desired gitHub account, click on the repo you want to fork, then click on fork at the top right corner of your screen.
+
+CLONE:
+This is to copy a remote repo to your local
+Command: git clone ne https://github.com/SusanOnuorah/Ticketing_Cohort8.git
+
+
+MERGE VS MERGE SQUASH VS REBASE:
+Git Merge:
+Git merge is one of the merging techniques in git, in which the logs of commits on branches are intact.
+Let us take an example if we have a project with 3 commits on the master branch as commit 1,2,3 and feature branch commits as commit A and B. If we perform a git merge operation then commits A and B will be merged into master infront of master's previous commits.
+Advantages:
+The logs are very exhaustive and can help in understanding the complete history of how and when each merge happened
+It is easy to find mistakes and resolve them.
+Disadvantages:
+Results in a clumsy log / history
+
+MERGE SQUASH:
+Git merge squash: git merge --squash <sourcebranch>
+Unlike the git merge that takes all new commits from the branch and puts in front of existing commits of the dest branch and still create another commit for the merge (making it quite clumsy),
+squash takes all the commits from the source branch squashes it into one commit and adds to the destination branch while still preserving the details of the commits.
+After running the merge --squash, you would have to run a git commit -m "" cause it is doing a squashed commit
+
+Git-Rebase:
+Git Rebase is similar to git merge, but the logs are modified after merge in this technique. 
+Let us take an example if we have a project with 3 commits on the master branch as commit 1,2,3 and feature branch commits as commit A and B. If we perform a git rebase master on the feature branch, the new commit in the main branch will be put before the commits in the feature branch.
+So it just rebases the commit from which the feature branch was checked out from the main branch. 
+So git checks, what is the common commit between the both branches? Then it would check if the source branch (main) has a new commit, if it does, it would put the new commit from the source branch after the common commit then push the dest branch (feature) new commits afterwards.
+Advantages:
+The logs are linear
+It’s easy to move through the project.
+Disadvantages:
+We cannot track, when and how the commits were merged on the target branch
+
+
+GOOD LUCK!!!!!
+
+
+
+
+
+
+
