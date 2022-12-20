@@ -1,0 +1,174 @@
+Maven:
+
+Maven is a build tool used for creating deployable artifacts from source code
+
+Build Tool
+Ant       1000 lines of code
+Gradle
+npm
+maven    400 lines
+
+
+Why Maven:
+1. It reduces the lines of code
+2. it have set standard
+
+Project Object Model  = pom.xml
+
+- Have sets of standard
+- Have a project lifecycle
+- A dependency management system
+- Logic for exection at various lifecycle of project
+- maven makes project IDE agnostic
+- Allows for easy modification to the project
+- Simplifies the declaration of project dependency - focus on what or what not
+- Ease the preperation of project documentation - pom.xml
+
+who organises the code: = Developers.
+
+Folder/Directory
+
+POM file = project Object model pom.xml (The heart of maven project) 
+
+baseline construct  - files are set-up with specific/default behaviours
+
+source code   - src/main folder/Directory
+resources     - other folders/Directory or files
+test cases    - another folders/Directory (unit test) Junit
+built artifacts - target folder/directory
+
+
+Directory structure for maven:
+  src
+  target
+  pom
+
+maven pre-requisite:
+  Java Runtime Environment = JRE
+  Java Development Kit     = 1.8+ 
+
+Ways to install maven:
+- maven can be installed as statefull application
+- maven can be installed as tool in Jenkins
+- maven can be installed as a plugin in Jenkins
+
+
+Maven lifecycle Goal:
+  3 lifecycle Goals:
+
+- Clean
+- Site / Swaggar
+- Default
+
+
+
+lifecycle                                           Goals:
+==========================================================
+1. Clean                                            clean: 
+                                                    deletes the old builds
+                                                    mvn clean
+
+2. Site / Swaggar                                   site:
+                                                    Javac is a command that compiles java classes,
+                                                    Generate bytes that JVM can understand
+                                                    Then it will do a build
+                                                    JVM = 1000101000101011101010110
+
+3. Default                                          validate:
+                                                    maven will validate that the project is correct and all neccessary information
+                                                    is avaliable
+                                                    mvn validate
+           
+                                                    compile:
+                                                    mvn compile 
+                                                    maven will compile the source code of the project
+                                                    maven will compile all the java classes and unit test cases
+
+                                                    test:
+                                                    mvn test
+                                                    it will run unit test cases (JUnit)
+
+                                                    package:
+                                                    mvn package
+                                                    maven will download the dependencies into the local repository for subsequent use
+                                                    it will store the build artifacts in the repository
+                                                    local = .m2/repository
+
+                                                    mvn install
+
+                                                    deploy:
+                                                    mvn deploy
+                                                    It will upload the build artifacts to remote repository
+Type of packages in maven:
+.jar   = Standalone applciation =  acadaleaening.jar  =  Java archive
+.war   = web application        =  acadaleaening.war  =  Java archive
+.ear   = enterprice application =  acadaleaening.ear  =  Java archive
+
+
+JVM = Java Virtual Machine
+human readable activities to bin (1001001011111010111010101)
+
+git clone
+git merge
+git pull
+
+
+
+mvn package:
+validate
+compile
+test
+package
+
+
+Maven Installation as a statefull application:  
+You can install maven on windows and Linux
+Maven installation in Centos 7 & 8 and RHEL 7 & 8
+t2 medium 4GM RAM 
+---------------------------------------------------------
+JAVA -  Pre Requisite Software  and Git for code download
+---------------------------------------------------------
+# Become root and cd /opt  (sudo su && cd /opt)
+
+sudo su – 
+cd /opt
+
+yum install wget nano tree unzip git-all -y
+
+yum install java-11-openjdk-devel java-1.8.0-openjdk-devel -y
+java -version
+git --version
+
+2. Install Maven.sh
+------------------
+Step1) Download the Maven Software
+
+wget https://downloads.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.zip
+unzip apache-maven-3.8.6-bin.zip 
+rm -rf apache-maven-3.8.6-bin.zip
+mv apache-maven-3.8.6/ maven
+
+Step3a) Set Environmental Variable  -  For Specific User
+----------------------
+vi ~/.bash_profile
+export M2_HOME=/opt/maven
+export PATH=$PATH:$M2_HOME/bin
+or
+Step3b) Set Environmental Variable  For All Users
+---------------------- 
+vi /etc/profile
+export M2_HOME=/opt/maven
+export PATH=$PATH:$M2_HOME/bin
+ 
+step4) Activate the maven home and mvn by running the below scripts
+source ~/.bash_profile
+source /etc/profile
+
+Step5) Check the Maven version
+mvn -version
+END OF INSTALLATION.
+
+
+
+maven home directory = /opt/maven
+
