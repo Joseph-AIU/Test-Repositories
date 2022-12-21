@@ -1,6 +1,0 @@
-<<<<<<< HEAD
-This is our first class on VCS
-A new branch called bugfix was just created Today 12/16/2022
-This file was just edited from the bugfix branch.
-=======
-
