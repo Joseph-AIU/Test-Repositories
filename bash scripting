@@ -1,0 +1,356 @@
+Bash Shell Scripting:
+
+
+Computer:
+    Bare Metal or Hard Ware 
+      RAM
+      CPU 
+      ROM 
+      MOUSE
+      KEYBOARD
+    software component 
+      operating system = OS
+      other softwares :
+         shell 
+         Sublime 
+         Microsoft word/Excell 
+
+IT / Computer Usage / Management:
+  GUI = Graphical User Interface
+         pros: simple and easy undertand 
+         cons: security lapses 
+               Time consuming
+  CLI = Command Line Interface
+        pros: Automation is easy
+              Security level is high
+              Very fast and save time
+              Detect errors faster
+              log messages
+              work on virtual computers
+              flexibity, fast and efficient, set command in text form 
+              multiple users
+        cons: complex, CASE sensitive, not user friendly, hidden costs
+
+Operating systems OS:
+  windows 
+      windows 10, 11 home edition / Professional
+      windows server = 2012 / 2016 /2019
+      powershell = MS-DOS command
+
+  MacOS:
+  Chrome:
+  Linux: Runs on GUI and CLI
+
+
+==========================================
+BASH SHELL SCRIPTING:
+
+Client: Oxdit
+
+seperators:
+  &&  / ; / ;;
+
+
+What is bash shell Scripting:
+  BSS = is a collections of command in a file.
+
+
+  shell = interpreters
+  1000101111010101010101010
+
+  typs of shell:
+  sh
+  bash
+  csh
+  ksh
+  tsh
+
+
+  default shell in linux:
+    sh   = Bourne Shell
+    bash = Bourne again Shell
+
+    To know the shell you are using: echo $SHELL
+
+Shell naming convention:
+  shell-script
+
+  <filename>.sh   or   sc 
+  hello.sh  
+  hello.sc
+  hello
+
+  java-code: 
+   hello.java
+  python:
+    hello.py
+  text-file:
+    hello.txt
+  html:
+    hello.html
+
+
+Example1:
+echo hello
+whoami
+echo The Lord is Good
+echo "Welcome to ACADA"
+date
+
+sudo yum install csh -y
+
+shebang: =  #!/bin/bash
+
+#!/bin/bash
+echo hello Engineer
+echo "Welcome to Scripting"
+echo 'This is the first shell scripting lecture'
+echo 'Todays date is'
+date
+echo "Scripting is very easy"
+
+
+#!/bin/bash
+date
+ls
+pwd
+whoami
+echo thanks
+mkdir efe
+ls
+pwd
+
+
+IQ: 
+  How do you resolve an issue in a script.
+  * vi into the file and edit.
+  * cat the file to go through it 
+  * debugging mode ( -x ) or set the debug mode in the file
+  * redirect the error to another file
+
+
+date
+ls
+pwd
+set -x
+whoami
+Pwd
+echo thanks
+#mkdir efe
+set +x
+ls
+
+
+package Management:
+#!/bin/bash
+echo "Installing Applications"
+echo Instal k - shell
+sudo yum install ksh 
+echo install git
+sudo yum install git 
+
+
+comments:
+Two types of comments.
+  *Single line         = # 
+  *multiline comment   
+
+    <<good
+
+    good
+
+
+#Authur: Efe
+#Please note this script can only be executed in linux
+#Please assume sudo right for the user before executing the script
+echo "Installing Applications"
+<<oop
+echo Instal k - shell
+sudo yum install ksh 
+echo install git
+#Installing git as sudo
+sudo yum install git 
+oop
+sudo 
+echo "End of line"
+
+groovy script comment:
+  // = single line
+
+  */    
+     = multi-line
+  /*
+
+  Scripting or automation langauges:
+    1. Bash shell scripting
+    2. Python
+    3. Groovy   - Jenkins
+    4. Rudy
+    5. yaml     - K8s, Ansible, cloudformation
+    6. JSON   
+    7. HCL      - Terraform
+    8. XML      - html
+    9. Go & Golang 
+
+
+#!/bin/bash
+#Author: Efe J.
+#Date : Oct. 2022
+#This script display info about DevOps
+#This script installs packages in linux sever.
+echo "single-line comment starts"
+echo "DevOps is good"
+date
+echo "Oxdit Miles" 
+
+echo "Multi-line comment starts"
+<<boy
+  press "i" to enter insert mode
+  press esc key to enter command mode
+  press ":wq" to save and quit
+boy
+echo "Multi-line comment ends"
+
+uses of script:
+* Monitor servers 
+* user Management
+* file Management
+* package Management
+* export SSH-keys
+* Deploy Applications
+* automate tasks
+* reuse the code
+* debug
+
+
+===================================
+
+01 Nov 2022:
+
+Varaibles:
+  is a character string we use to assign a value
+  and its stores values in key value pairs
+
+   school=ACADALEarning
+   name=Efe
+   study="DevOps Master Program"
+
+   HOSTNAME=ip-172-31-24-3.ec2.internal
+
+
+            ip-172-31-24-3.ec2.internal
+
+
+  Types of Variables in Linux:
+  * System Defined Varaibles:
+    Comes predefined by the OS 
+    echo $SHELL=/bin/bash
+    echo $USER
+    echo $PWD
+
+    env = environmental varibales
+
+How to modify system defind variables:
+  *for a single user
+vi .bashrc
+export HISTSIZE=1000
+source .bashrc
+
+*for all users
+ vi /etc/profile
+ export HISTSIZE=1000
+ source /etc/profile
+
+  * User Defined Varaibles: (lowercases recommended)
+
+
+#!/bin/bash
+# This Script is teaching us how to define varaibles
+# Using variable as a place holder
+# Use variable to reduce lines of code
+# Call variable using $variablename or ${variablename}
+
+name=Efe
+school=ACADALearning
+class=DevOpsMasterClass
+echo $name
+echo $school
+echo $class
+echo ${name}
+echo ${school}
+echo ${class}
+echo I am studying $class in $school and my teacher is $name
+
+
+hardcode
+
+#!/bi#!/bin/bash
+echo "Welcome to ACADA learning"
+echo "Please enter your name"
+read answer
+echo Hello $answer, is this correct?
+read answer2
+echo "Thank you for signing up"
+
+
+#!/bi#!/bin/bash
+echo "Welcome to RBC self service"
+echo "Please slot in your card"
+echo please enter your pin
+read pin
+echo "The pin you entered is $pin"
+echo "is this correct?"
+read answer
+echo "login successfull"
+
+
+
+school="ACADA Learning"
+course=DevOpsMasterProgram
+
+echo "I am studying DevOps in $school"
+echo I am studying $course in $school
+echo "I'm studying Devops in $school"
+echo DevOps
+echo 'DevOps'
+echo "DevOps"
+
+
+var6.sh
+#!/bin/bash
+<<ss
+You need to be root user or have sudo access to execute this script
+This scrip will onlu run on linux OS
+ss
+
+echo "Creating a new user in linux"
+echo Enter username
+read username
+echo Enter Password
+read -s password
+sudo adduser $username
+echo $password | sudo passwd $username --stdin
+tail -2 /etc/passwd
+
+
+
+
+
+sudo adduser Jennifer
+
+sudo adduser $username
+
+
+standard input
+standard output
+standard error
+
+
+
+Assigment:
+  * Rewrite the var6.sh script
+  * write a script to touch a file, copy the file,
+    then change the ownership of the file to another user
+
+
+
