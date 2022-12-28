@@ -171,4 +171,4 @@ END OF INSTALLATION.
 
 
 maven home directory = /opt/maven
-
+maven is a build tool used for devops ci/cd pipeline
