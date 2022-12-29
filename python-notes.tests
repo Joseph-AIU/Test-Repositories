@@ -1294,3 +1294,4 @@ sftp_client.put("transfer_files.py",'/home/ec2-user/transfer_files.py')
 sftp_client.close()
 ssh.close()                     ==> It is important to close your ssh server after fini
 
+#Just aded this line for git merge  practice
